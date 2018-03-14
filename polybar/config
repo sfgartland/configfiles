@@ -9,15 +9,14 @@
 
 [colors]
 ;background = ${xrdb:color0:#222}
-background = #222
+background = #073642
 background-alt = #444
 ;foreground = ${xrdb:color7:#222}
-foreground = #dfdfdf
-foreground-alt = #555
+foreground = #bbb
+foreground-alt = #bbb
 primary = #ffb52a
 secondary = #e60053
 alert = #bd2c40
-danger = #ff0000
 
 [bar/top]
 ;monitor = ${env:MONITOR:HDMI-1}
@@ -51,7 +50,7 @@ font-4 = Font Awesome 5 Free:style=Solid:pixelsize=15;1
 font-5 = Font Awesome 5 Brands:pixelsize=13;1
 
 modules-left = 
-modules-center = date 
+modules-center = date
 modules-right = volume xbacklight battery powermenu
 
 tray-position = left
@@ -106,7 +105,7 @@ font-3 = Font Awesome 5 Free:style=Regular:pixelsize=15;1
 font-4 = Font Awesome 5 Free:style=Solid:pixelsize=15;1
 font-5 = Font Awesome 5 Brands:pixelsize=15;1
 
-modules-left = i3
+modules-left = i3 xwindow
 modules-center = spotify
 modules-right = memory cpu temperature filesystem
 
@@ -178,13 +177,13 @@ label-mode-foreground = #000
 label-mode-background = ${colors.primary}
 
 ; focused = Active workspace on focused monitor
-label-focused = %index%
+label-focused = %name%
 label-focused-background = ${module/bspwm.label-focused-background}
 label-focused-underline = ${module/bspwm.label-focused-underline}
 label-focused-padding = ${module/bspwm.label-focused-padding}
 
 ; unfocused = Inactive workspace on any monitor
-label-unfocused = %index%
+label-unfocused = %name%
 label-unfocused-padding = ${module/bspwm.label-occupied-padding}
 
 ; visible = Active workspace on unfocused monitor
@@ -197,6 +196,12 @@ label-visible-padding = ${self.label-focused-padding}
 label-urgent = %index%
 label-urgent-background = ${module/bspwm.label-urgent-background}
 label-urgent-padding = ${module/bspwm.label-urgent-padding}
+
+[module/weather]
+type = custom/script
+exec = ~/.config/polybar/polybar-scripts/polybar-scripts/openweathermap-fullfeatured/openweathermap-fullfeatured.sh
+interval = 600
+label-font = 3
 
 [module/mpd]
 type = internal/mpd
