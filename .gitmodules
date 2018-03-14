@@ -1,0 +1,3 @@
+[submodule "polybar/polybar-scripts"]
+	path = polybar/polybar-scripts
+	url = https://github.com/x70b1/polybar-scripts.git

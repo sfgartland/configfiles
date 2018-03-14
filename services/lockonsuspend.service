@@ -1,0 +1,10 @@
+[Unit]
+Description=Lock X session
+Before=suspend.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/xflock4
+
+[Install]
+WantedBy=suspend.target
