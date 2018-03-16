@@ -192,6 +192,8 @@ bindsym XF86AudioPrev exec playerctl previous
 
 bindsym $mod+Shift+s exec "emacsclient -c"
 
+bindsym $mod+Shift+a exec "dm-tool lock"
+
 #see link to reseve back to xfce4 defaults
 #https://www.santi.cf/blog/using-i3-with-xfce
 exec --no-startup-id xfce4-session
