@@ -101,13 +101,13 @@ set $ws5 "5"
 set $ws6 "6"
 set $ws7 "7"
 set $ws8 "8"
-set $ws9 "9"
+set $ws9 "9 atop"
 set $ws10 "10 music"
 
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1; exec ~/.config/i3/autostarti3.sh chrome google-chrome-stable
-bindsym $mod+2 workspace $ws2 exec ~/.config/i3/autostarti3.sh Thunar Thunar
+bindsym $mod+2 workspace $ws2 exec ~/.config/i3/autostarti3.sh nautilus nautilus
 bindsym $mod+3 workspace $ws3
 bindsym $mod+4 workspace $ws4
 bindsym $mod+5 workspace $ws5
@@ -216,4 +216,5 @@ exec_always --no-startup-id compton -b
 # AUTOSTARTS
 exec --no-startup-id i3-msg 'workspace '$ws4'; exec i3-sensible-terminal'
 exec --no-startup-id i3-msg 'workspace '$ws4'; exec i3-sensible-terminal'
+exec --no-startup-id i3-msg 'workspace '$ws9'; exec i3-sensible-terminal -e atop'
 exec --no-startup-id i3-msg 'workspace '$ws10'; exec /usr/bin/spotify'
