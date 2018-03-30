@@ -4,3 +4,4 @@ set PATH $PATH /home/sfgartland/.yarn/bin
 
 alias e="emacsclient -c"
 alias testnet="ping 8.8.8.8"
+alias update="yaourt -Syu"
