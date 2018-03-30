@@ -49,11 +49,11 @@ font-3 = Font Awesome 5 Free:style=Regular:pixelsize=15;1
 font-4 = Font Awesome 5 Free:style=Solid:pixelsize=15;1
 font-5 = Font Awesome 5 Brands:pixelsize=13;1
 
-modules-left = 
+modules-left = battery wlan 
 modules-center = date
-modules-right = volume xbacklight battery powermenu
+modules-right = volume xbacklight powermenu
 
-tray-position = left
+; tray-position = left
 tray-padding = 2
 ;tray-transparent = true
 ;tray-background = #0063ff
@@ -277,14 +277,12 @@ interface = wlo1
 interval = 3.0
 
 format-connected = <ramp-signal> <label-connected>
-format-connected-underline = #9f78e1
-label-connected = %essid%
+label-connected = %essid% %downspeed%
 
-format-disconnected =
-;format-disconnected = <label-disconnected>
-;format-disconnected-underline = ${self.format-connected-underline}
-;label-disconnected = %ifname% disconnected
-;label-disconnected-foreground = ${colors.foreground-alt}
+; format-disconnected =
+format-disconnected = <label-disconnected>
+label-disconnected = %ifname% disconnected
+label-disconnected-foreground = ${colors.foreground-alt}
 
 
 ramp-signal-0 = 
@@ -368,18 +366,15 @@ full-at = 98
 format-time = %H:%M
 
 format-charging = <animation-charging> <label-charging>
-format-charging-underline = #ffb52a
 
 format-discharging = <ramp-capacity> <label-discharging>
-format-discharging-underline = ${self.format-charging-underline}
 label-discharging = %percentage%% %time%
 
 format-full-prefix = " "
 format-full-prefix-foreground = ${colors.foreground-alt}
-format-full-underline = ${self.format-charging-underline}
 
 ramp-capacity-0 = 
-ramp-capacity-0-foreground = ${colors.danger}
+ramp-capacity-0-foreground = ${colors.alert}
 ramp-capacity-1 = 
 ramp-capacity-1-foreground = ${colors.alert}
 ramp-capacity-2 = 
