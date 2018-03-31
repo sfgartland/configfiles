@@ -1,0 +1,30 @@
+
+; linkto[laptop]: ~/.config/polybar/config
+
+include-file = ~/.config/polybar/config-common
+
+[bar/top]
+inherit = bar/base
+
+; monitor = HDMI-0
+top = true
+
+modules-left = wlan-laptop
+modules-center = date
+modules-right = volume
+
+
+[bar/bottom]
+inherit = bar/base
+
+; monitor = HDMI-0
+bottom = true
+
+modules-left = i3 xwindow
+modules-center = spotify
+modules-right = memory cpu temperature filesystem
+
+
+[module/wlan-laptop]
+inherit = module/wlan
+interface = wlo1
