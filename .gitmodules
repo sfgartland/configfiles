@@ -1,0 +1,3 @@
+[submodule "auto-setups/rtl8812au"]
+	path = auto-setups/rtl8812au
+	url = https://github.com/zebulon2/rtl8812au.git
