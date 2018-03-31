@@ -34,9 +34,6 @@ if [[ $(systemctl is-enabled lightdm) = "disabled" ]]; then
     exit 1
 fi
 
-# Sets greeter to use
-sudo cat /etc/lightdm/lightdm.conf | sed "s/^greeter-session.*$/greeter-session=slick-greeter/" > /etc/lightdm/lightdm.conf
-
 printf "REMEMBER TO LINK GREETER CONFIG!!!!\n"
 
 exit 0
