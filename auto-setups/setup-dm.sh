@@ -12,7 +12,7 @@ fi
 
 if [[ -z $hasGreeter ]]; then
     echo "missing  Greeter for LightDM"
-    missingPacs="$missingPacs lightdm-webkit2-greeter"
+    missingPacs="$missingPacs lightdm-slick-greeter"
 fi
 
 #if [[ -z $hasTheme ]]; then
