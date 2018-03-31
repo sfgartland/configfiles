@@ -26,7 +26,11 @@ font pango:monospace 8
 # The font above is very space-efficient, that is, it looks good, sharp and
 # clear in small sizes. However, its unicode glyph coverage is limited, the old
 # X core fonts rendering does not support right-to-left and this being a bitmap
-# font, it doesn’t emacsclient -a '' -nqc "$@"scale on retina/hidpi displays.
+# font, it doesn’t scale on retina/hidpi displays.
+
+# setup for monitors
+exec --no-startup-id ./monitor-setup.sh
+
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -122,8 +126,8 @@ bindsym $mod+5 workspace $ws5
 bindsym $mod+6 workspace $ws6
 bindsym $mod+7 workspace $ws7
 bindsym $mod+8 workspace $ws8
-bindsym $mod+9 workspace $ws9; move workspace to output left
-bindsym $mod+0 workspace $ws10; move workspace to output left
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws10
 
 
 # move focused container to workspace
@@ -202,15 +206,7 @@ bindsym $mod+Shift+s exec "emacsclient -c"
 
 bindsym $mod+Shift+a exec "dm-tool lock"
 
-#see link to reseve back to xfce4 defaults
-#https://www.santi.cf/blog/using-i3-with-xfce
-# exec --no-startup-id xfce4-session
-
-# setup for monitors
-exec ./monitor-setup.sh
-
 #gaps setup
-
 # disables window titlebars
 for_window [class="^.*"] border pixel 0 
 
@@ -223,11 +219,11 @@ smart_gaps on
 exec --no-startup-id nitrogen --restore
 
 # Kills all running comptons and starts a new compton daemon
-exec_always pkill compton && --no-startup-id compton -b
+exec --no-startup-id compton -b
 
 
 # AUTOSTARTS
-exec --no-startup-id i3-msg 'workspace '$ws4'; exec i3-sensible-terminal'
-exec --no-startup-id i3-msg 'workspace '$ws4'; exec i3-sensible-terminal'
-exec --no-startup-id i3-msg 'workspace '$ws9'; exec i3-sensible-terminal -e atop -p'
-exec --no-startup-id i3-msg 'workspace '$ws10'; exec /usr/bin/spotify'
+exec i3-msg 'workspace '$ws4'; exec i3-sensible-terminal'
+exec i3-msg 'workspace '$ws4'; exec i3-sensible-terminal'
+exec i3-msg 'workspace '$ws9'; exec i3-sensible-terminal -e atop -p'
+exec i3-msg 'workspace '$ws10'; exec /usr/bin/spotify'
