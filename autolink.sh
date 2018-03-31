@@ -48,21 +48,22 @@ for file in $(find $PWD -type f ! -name "*.swp" ! -name "*#" ! -path "*.git*"); 
 			      done
 
 			      if [[ $replaceAndLink = "y" ]]; then
-				        mv $target $target".tmpbackup"
+				        sudo mv $target $target".tmpbackup"
 				        if [[ -f $target ]]; then
 					          echo "\t\tCouldnt move/remove TARGET file...Exiting"
 					          exit 1
 				        fi
 
-                mkdir --parents $(dirname $target)
-				        ln -s $file $target
+                			sudo mkdir --parents $(dirname $target)
+				        sudo ln -s $file $target
+
 				        if [[ $(readlink $target) = $file ]]; then
-					          rm $target".tmpbackup"
+					          sudo rm $target".tmpbackup"
 				        else
 					          echo "\t\tCouldnt link files"
 					          echo "\t\tRestoring old file and exiting"
 
-					          mv $target".tmpbackup" $target
+					          sudo mv $target".tmpbackup" $target
 
 					          exit 1
 				        fi
@@ -79,7 +80,7 @@ for file in $(find $PWD -type f ! -name "*.swp" ! -name "*#" ! -path "*.git*"); 
 
 			      if [[ $linkFiles = "y" ]]; then
                 mkdir --parents $(dirname $target)
-				        ln -s $file $target
+				        sudo ln -s $file $target
 
 				        if [[ $(readlink $target) = $file ]]; then
 					          echo "File linked!"
