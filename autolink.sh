@@ -1,6 +1,6 @@
 #!/bin/bash
 
-numOfLines=5
+numOfLines=100
 
 while [[ $platform != "desktop" ]] && [[ $platform != "laptop" ]]; do
 	printf "Select platform: (desktop/laptop) "
@@ -8,12 +8,12 @@ while [[ $platform != "desktop" ]] && [[ $platform != "laptop" ]]; do
 done
 
 for file in $(find $PWD -type f ! -name "*.swp" ! -name "*#" ! -path "*.git*"); do
-	if [[ $(head -$numOfLines $file) = *" linkto"* ]]; then
+	if [[ $file != *$(basename $0) ]] && [[ $(head -$numOfLines $file) = *" linkto:"* ]]; then
 
-		linkString=$(head -$numOfLines $file | grep -E "linkto\[$platform\]:")
+		linkString=$(head -$numOfLines $file | grep -E "\s{1}linkto\[$platform\]:")
 
 		if [[ $linkString = "" ]]; then
-			linkString=$(head -$numOfLines $file | grep -E "linkto:")
+			linkString=$(head -$numOfLines $file | grep -E "\s{1}linkto:")
 		fi
 
 		if [[ ! $linkString ]]; then
@@ -24,7 +24,7 @@ for file in $(find $PWD -type f ! -name "*.swp" ! -name "*#" ! -path "*.git*"); 
 
 
 		    eval target=$(echo $linkString \
-			                    | sed -E "s/.{1,}\slinkto\[{0,1}.{0,}\]{0,1}:\s//")
+			                    | sed -E "s/.{1,}\s{1}linkto\[{0,1}.{0,}\]{0,1}:\s//")
 
 		    printf "$file->$target\n"
 		    if [[ $(readlink $target) = $file ]]; then
