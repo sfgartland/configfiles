@@ -112,7 +112,8 @@ set $ws10 "10 music"
 
 
 # switch to workspace
-bindsym $mod+1 workspace $ws1; exec ~/.config/i3/autostarti3.sh chrome google-chrome-stable
+# bindsym $mod+1 workspace $ws1; exec ~/.config/i3/autostarti3.sh chrome google-chrome-stable
+bindsym $mod+1 workspace $ws1
 # bindsym $mod+2 workspace $ws2 exec ~/.config/i3/autostarti3.sh nautilus nautilus
 bindsym $mod+2 workspace $ws2
 bindsym $mod+3 workspace $ws3
@@ -121,8 +122,8 @@ bindsym $mod+5 workspace $ws5
 bindsym $mod+6 workspace $ws6
 bindsym $mod+7 workspace $ws7
 bindsym $mod+8 workspace $ws8
-bindsym $mod+9 workspace $ws9
-bindsym $mod+0 workspace $ws10
+bindsym $mod+9 workspace $ws9; move workspace to output left
+bindsym $mod+0 workspace $ws10; move workspace to output left
 
 
 # move focused container to workspace
