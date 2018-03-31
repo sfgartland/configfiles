@@ -1,5 +1,7 @@
 #!/bin/sh
 
+# linkto: ~/.config/polybar/spotify.sh
+
 main() {
   if ! pgrep -x spotify >/dev/null; then
     echo ""; exit

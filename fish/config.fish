@@ -1,3 +1,5 @@
+# linkto: ~/.config/fish/config.fish
+
 # Set our default path
 set PATH $PATH /usr/local/sbin /usr/local/bin /usr/bin /opt/anaconda/bin
 set PATH $PATH /home/sfgartland/.yarn/bin

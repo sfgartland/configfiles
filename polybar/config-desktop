@@ -1,0 +1,41 @@
+
+; linkto[desktop]: ~/.config/polybar/config
+
+include-file = ~/.config/polybar/config-common
+
+[bar/primary-top]
+inherit = bar/base
+
+monitor = HDMI-0
+top = true
+
+modules-left = wlan-desktop
+modules-center = date
+modules-right = volume
+
+
+[bar/primary-bottom]
+inherit = bar/base
+
+monitor = HDMI-0
+bottom = true
+
+modules-left = xwindow
+modules-center = spotify
+modules-right = memory cpu temperature filesystem
+
+[bar/secondary-bottom]
+inherit = bar/base
+
+monitor = DVI-I-1
+bottom = true
+
+modules-left = i3 
+modules-center = 
+modules-right = 
+
+
+
+[module/wlan-desktop]
+inherit = module/wlan
+interface = wlp0s20u4u4

@@ -1,0 +1,24 @@
+#!/bin/sh
+
+currentShell=$SHELL
+
+if $currentShell | grep 'bash' &> /dev/null; then
+	# printf "Current shell is already fish...Exiting"
+	exit 1
+fi
+
+fish=$(chsh -l | grep 'fish')
+if [ -z "$fish" ]; then
+	printf "Downloading and installing fish..."
+	sudo pacman -S fish
+	fish=$(chsh -l | grep 'fish')
+	printf "Installed"
+fi
+if $fish &> /dev/null; then
+	# chsh -s $fish
+	printf "Success, changed shells to fish!"
+else
+	printf "Somthing went wrong installing fish"
+fi
+
+exit 0
