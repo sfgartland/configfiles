@@ -171,6 +171,10 @@ exec = ~/.config/polybar/spotify.sh %artist% - %title%
 tail = true
 interval = 2
 
+click-left = playerctl play-pause
+scroll-up = playerctl previous
+scroll-down = playerctl next
+
 [module/xbacklight]
 type = internal/xbacklight
 
@@ -201,7 +205,6 @@ type = internal/cpu
 interval = 2
 format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #f90000
 label = %percentage:2%%
 
 [module/memory]
@@ -209,7 +212,6 @@ type = internal/memory
 interval = 2
 format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #4bffdc
 label = %percentage_used%%
 
 [module/wlan]
@@ -240,7 +242,6 @@ type = internal/network
 interface = enp0s25
 interval = 3.0
 
-format-connected-underline = #55aa55
 format-connected-prefix = " "
 format-connected-prefix-foreground = ${colors.foreground-alt}
 label-connected = %local_ip% %downspeed%
@@ -263,7 +264,6 @@ time-alt = %H:%M:%S
 
 format-prefix = 
 format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #0a6cf5
 
 label = %time% %date%
 
@@ -337,12 +337,10 @@ thermal-zone = 0
 warn-temperature = 60
 
 format = <ramp> <label>
-format-underline = #f50a4d
 format-warn = <ramp> <label-warn>
-format-warn-underline = ${self.format-underline}
 
-label = %temperature%
-label-warn = %temperature%
+label = %temperature-c%
+label-warn = %temperature-c%
 label-warn-foreground = ${colors.secondary}
 
 ramp-0 = 
