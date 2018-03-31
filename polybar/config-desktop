@@ -20,7 +20,7 @@ inherit = bar/base
 monitor = HDMI-0
 bottom = true
 
-modules-left = xwindow
+modules-left = i3 xwindow
 modules-center = spotify
 modules-right = memory cpu temperature filesystem
 
@@ -30,7 +30,7 @@ inherit = bar/base
 monitor = DVI-I-1
 bottom = true
 
-modules-left = i3 
+modules-left = i3 xwindow
 modules-center = 
 modules-right = 
 
