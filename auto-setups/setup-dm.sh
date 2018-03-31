@@ -2,8 +2,8 @@
 
 # Matches packages using start anchor and whitespace at end
 hasLightDM=$(yaourt -Q | grep -E "\/lightdm\s")
-hasGreeter=$(yaourt -Q | grep -E "\/lightdm-webkit2-greeter\s")
-hasTheme=$(yaourt -Q | grep -E "\/lightdm-webkit2-theme-material2\s")
+hasGreeter=$(yaourt -Q | grep -E "\/lightdm-slick-greeter\s")
+#hasTheme=$(yaourt -Q | grep -E "\/lightdm-webkit2-theme-material2\s")
 
 if [[ -z $hasLightDM ]]; then
     echo "missing LightDM"
@@ -15,13 +15,13 @@ if [[ -z $hasGreeter ]]; then
     missingPacs="$missingPacs lightdm-webkit2-greeter"
 fi
 
-if [[ -z $hasTheme ]]; then
-    echo "missing  theme for greeter"
-    missingPacs="$missingPacs lightdm-webkit2-theme-material2"
-fi
+#if [[ -z $hasTheme ]]; then
+#    echo "missing  theme for greeter"
+#    missingPacs="$missingPacs lightdm-webkit2-theme-material2"
+#fi
 
 # Installs missing packages
-if [[ -z $hasLightDM ]] || [[ -z $hasGreeter ]] || [[ -z $hasTheme ]]; then
+if [[ -z $hasLightDM ]] || [[ -z $hasGreeter ]]; then
     yaourt -S $missingPacs
 fi
 
@@ -35,7 +35,7 @@ if [[ $(systemctl is-enabled lightdm) = "disabled" ]]; then
 fi
 
 # Sets greeter to use
-sudo cat /etc/lightdm/lightdm.conf | sed "s/^greeter-session.*$/greeter-session=lightdm-webkit2-greeter/" > /etc/lightdm/lightdm.conf
+sudo cat /etc/lightdm/lightdm.conf | sed "s/^greeter-session.*$/greeter-session=slick-greeter/" > /etc/lightdm/lightdm.conf
 
 
 
