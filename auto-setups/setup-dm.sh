@@ -2,8 +2,10 @@
 
 # Matches packages using start anchor and whitespace at end
 hasLightDM=$(yaourt -Q | grep -E "\/lightdm\s")
-hasGreeter=$(yaourt -Q | grep -E "\/lightdm-slick-greeter\s")
-#hasTheme=$(yaourt -Q | grep -E "\/lightdm-webkit2-theme-material2\s")
+hasGreeter=$(yaourt -Q | grep -E "\/lightdm-webkit2-greeter\s")
+hasTheme=$(yaourt -Q | grep -E "\/lightdm-webkit2-theme-material2\s")
+
+missingPacs=""
 
 if [[ -z $hasLightDM ]]; then
     echo "missing LightDM"
@@ -15,13 +17,13 @@ if [[ -z $hasGreeter ]]; then
     missingPacs="$missingPacs lightdm-slick-greeter"
 fi
 
-#if [[ -z $hasTheme ]]; then
-#    echo "missing  theme for greeter"
-#    missingPacs="$missingPacs lightdm-webkit2-theme-material2"
-#fi
+if [[ -z $hasTheme ]]; then
+   echo "missing  theme for greeter"
+   missingPacs="$missingPacs lightdm-webkit2-theme-material2"
+fi
 
 # Installs missing packages
-if [[ -z $hasLightDM ]] || [[ -z $hasGreeter ]]; then
+if [[ $missingPacs != "" ]]; then
     yaourt -S $missingPacs
 fi
 
