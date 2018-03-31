@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# This script searches PWD and sub-dirs for files containing linkto/linkto[platform] strings and
+# creates symbolic links.
+
 numOfLines=100
 
 while [[ $platform != "desktop" ]] && [[ $platform != "laptop" ]]; do
@@ -33,13 +36,13 @@ for file in $(find $PWD -type f ! -name "*.swp" ! -name "*#" ! -path "*.git*"); 
 			      if [[ $removeLink = "y" ]]; then
 				        rm $target
 				        if [[ -f $target ]]; then
-					          echo "\tFailed to remove symlink...Exiting"
+					          printf "\tFailed to remove symlink...Exiting\n"
 					          exit 1
 				        fi
 			      fi
 
-		    elif [[ -f $target ]]; then
-			      printf "\tFile already present at TARGET path.\n"
+		    elif [[ -f $target ]] || [[ -L $target ]]; then
+			      printf "\tOther file/link already present at TARGET path.\n"
 			      replaceAndLink=""
 			      while [[ $replaceAndLink != "y" ]] \
 				              && [[ $replaceAndLink != "n" ]]; do
@@ -50,7 +53,7 @@ for file in $(find $PWD -type f ! -name "*.swp" ! -name "*#" ! -path "*.git*"); 
 			      if [[ $replaceAndLink = "y" ]]; then
 				        sudo mv $target $target".tmpbackup"
 				        if [[ -f $target ]]; then
-					          echo "\t\tCouldnt move/remove TARGET file...Exiting"
+					          printf "\t\tCouldnt move/remove TARGET file...Exiting\n"
 					          exit 1
 				        fi
 
@@ -60,15 +63,15 @@ for file in $(find $PWD -type f ! -name "*.swp" ! -name "*#" ! -path "*.git*"); 
 				        if [[ $(readlink $target) = $file ]]; then
 					          sudo rm $target".tmpbackup"
 				        else
-					          echo "\t\tCouldnt link files"
-					          echo "\t\tRestoring old file and exiting"
+					          printf "\t\tCouldnt link files\n"
+					          printf "\t\tRestoring old file and exiting\n"
 
 					          sudo mv $target".tmpbackup" $target
 
 					          exit 1
 				        fi
 
-				        echo "\tReplaced and linked file...Success"
+				        printf "\tReplaced and linked file...Success\n"
 			      fi
 
 		    else
@@ -83,9 +86,9 @@ for file in $(find $PWD -type f ! -name "*.swp" ! -name "*#" ! -path "*.git*"); 
 				        sudo ln -s $file $target
 
 				        if [[ $(readlink $target) = $file ]]; then
-					          echo "File linked!"
+					          printf "File linked!\n"
 				        else
-					          echo "Failed to link file... exiting"
+					          printf "Failed to link file... exiting\n"
 					          exit 1
 				        fi
 			      fi
