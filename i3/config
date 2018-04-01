@@ -115,6 +115,24 @@ set $ws9 "9 atop"
 set $ws10 "10 music"
 
 
+#gaps setup
+# disables window titlebars
+for_window [class="^.*"] border pixel 0 
+
+gaps inner 10
+gaps outer 0
+
+smart_gaps on
+
+#Starts nitrogen to show background
+exec --no-startup-id nitrogen --restore
+
+# Kills all running comptons and starts a new compton daemon
+exec --no-startup-id compton -b
+
+exec light-locker --lock-on-suspend --lock-on-lid
+
+
 # switch to workspace
 # bindsym $mod+1 workspace $ws1; exec ~/.config/i3/autostarti3.sh chrome google-chrome-stable
 bindsym $mod+1 workspace $ws1
@@ -205,24 +223,8 @@ bindsym XF86AudioPrev exec playerctl previous
 bindsym $mod+Shift+s exec "emacsclient -c"
 bindsym $mod+Shift+d exec "exec i3-sensible-terminal -e ranger"
 
-bindsym $mod+Shift+a exec "dm-tool lock"
+bindsym $mod+Shift+a exec "~/.config/i3/lock.sh"
 
-#gaps setup
-# disables window titlebars
-for_window [class="^.*"] border pixel 0 
-
-gaps inner 10
-gaps outer 0
-
-smart_gaps on
-
-#Starts nitrogen to show background
-exec --no-startup-id nitrogen --restore
-
-# Kills all running comptons and starts a new compton daemon
-exec --no-startup-id compton -b
-
-exec light-locker --lock-on-suspend --lock-on-lid
 
 # AUTOSTARTS
 exec i3-msg 'workspace '$ws4'; exec i3-sensible-terminal'
