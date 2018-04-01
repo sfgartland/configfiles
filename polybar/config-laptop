@@ -9,9 +9,9 @@ inherit = bar/base
 ; monitor = HDMI-0
 top = true
 
-modules-left = wlan-laptop
+modules-left = battery wlan-laptop
 modules-center = date
-modules-right = volume
+modules-right = volume xbacklight
 
 
 [bar/bottom]
