@@ -1,3 +1,5 @@
+# linkto: ~/.config/systemd/user/emacsdaemon.service
+
 [Unit]
 Description=Emacs: the extensible, self-documenting text editor
 
