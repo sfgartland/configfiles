@@ -23,3 +23,6 @@ DM:
 Terminal:
   rxvt-unicode-pixbuf
   fish
+
+laptop spesific:
+       light-locker
