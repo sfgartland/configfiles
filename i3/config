@@ -222,6 +222,7 @@ exec --no-startup-id nitrogen --restore
 # Kills all running comptons and starts a new compton daemon
 exec --no-startup-id compton -b
 
+exec light-locker --lock-on-suspend --lock-on-lid
 
 # AUTOSTARTS
 exec i3-msg 'workspace '$ws4'; exec i3-sensible-terminal'
