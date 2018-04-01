@@ -5,7 +5,7 @@
 # switch esc and capslock
 setxkbmap -option caps:swapescape
 
-export EDITOR="emacsclient -c -t"
+#set EDITOR vim
 
 # Starts GNOME keychain for terminal applications
 # if [ -n "$DESKTOP_SESSION" ]; then
