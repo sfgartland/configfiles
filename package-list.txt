@@ -1,4 +1,22 @@
-DE: xfce4 i3-gaps polybar-git wireless_tools ttf-font-awesome siji-git nitrogen compton
-DM: lightdm lightdm-webkit2-greeter lightdm-webkit2-theme-material2
+DE:
+  i3-gaps
 
-Terminal: urxvt fish
+  polybar-git
+    wireless_tools
+    playerctl
+    ttf-font-awesome
+    siji-git
+
+  nitrogen
+  compton
+
+  ranger
+
+DM:
+  lightdm
+    lightdm-webkit2-greeter
+      lightdm-webkit2-theme-material2
+
+Terminal:
+  rxvt-unicode-pixbuf
+  fish
