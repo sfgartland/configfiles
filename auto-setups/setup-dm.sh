@@ -14,7 +14,7 @@ fi
 
 if [[ -z $hasGreeter ]]; then
     echo "missing  Greeter for LightDM"
-    missingPacs="$missingPacs lightdm-slick-greeter"
+    missingPacs="$missingPacs lightdm-webkit2-greeter"
 fi
 
 if [[ -z $hasTheme ]]; then
@@ -27,11 +27,25 @@ if [[ $missingPacs != "" ]]; then
     yaourt -S $missingPacs
 fi
 
-if [[ $(systemctl is-enabled lightdm) = "disabled" ]]; then
-    sudo systemctl enable lightdm
+usePlymouth=""
+
+while [[ $usePlymouth = "" ]]; do
+    printf "Use plymouth? (y/n)"
+    read usePlymouth
+done
+
+if [[ usePlymouth = "y" ]]; then
+    serviceName="lightdm-plymouth"
+else
+    serviceName="lightdm"
 fi
 
-if [[ $(systemctl is-enabled lightdm) = "disabled" ]]; then
+
+if [[ $(systemctl is-enabled $serviceName) = "disabled" ]]; then
+    sudo systemctl enable $serviceName
+fi
+
+if [[ $(systemctl is-enabled $serviceName) = "disabled" ]]; then
     printf "Could not enable LightDM\n"
     exit 1
 fi
