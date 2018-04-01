@@ -46,11 +46,12 @@ for file in $(find $PWD -type f ! -name "*.swp" ! -name "*#" ! -path "*.git*"); 
 			      replaceAndLink=""
 			      while [[ $replaceAndLink != "y" ]] \
 				              && [[ $replaceAndLink != "n" ]]; do
-				        printf "\t\tReplace and link? (y/n)"
+				        printf "\t\tReplace and link? (y/n/b)"
 				        read replaceAndLink
 			      done
 
 			      if [[ $replaceAndLink = "y" ]]; then
+				      	sudo rm $target".tmpbackup"
 				        sudo mv $target $target".tmpbackup"
 				        if [[ -f $target ]]; then
 					          printf "\t\tCouldnt move/remove TARGET file...Exiting\n"
@@ -60,7 +61,7 @@ for file in $(find $PWD -type f ! -name "*.swp" ! -name "*#" ! -path "*.git*"); 
                 			sudo mkdir --parents $(dirname $target)
 				        sudo ln -s $file $target
 
-				        if [[ $(readlink $target) = $file ]]; then
+				        if [[ $(readlink $target) = $file ]] && [[ $replaceAndLink != "b" ]]; then
 					          sudo rm $target".tmpbackup"
 				        else
 					          printf "\t\tCouldnt link files\n"
