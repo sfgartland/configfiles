@@ -14,6 +14,8 @@ DE:
 
 DM:
   plymouth-legacy (see wiki for setup)
+  plymouth-theme-paw-arch
+
   lightdm
     lightdm-webkit2-greeter
       lightdm-webkit2-theme-material2
