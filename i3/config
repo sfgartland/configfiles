@@ -203,6 +203,7 @@ bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
 bindsym $mod+Shift+s exec "emacsclient -c"
+bindsym $mod+Shift+d exec "exec i3-sensible-terminal -e ranger"
 
 bindsym $mod+Shift+a exec "dm-tool lock"
 
@@ -225,5 +226,6 @@ exec --no-startup-id compton -b
 # AUTOSTARTS
 exec i3-msg 'workspace '$ws4'; exec i3-sensible-terminal'
 exec i3-msg 'workspace '$ws4'; exec i3-sensible-terminal'
+exec i3-msg 'workspace '$ws2'; exec i3-sensible-terminal -e ranger'
 exec i3-msg 'workspace '$ws9'; exec i3-sensible-terminal -e atop -p'
 exec i3-msg 'workspace '$ws10'; exec /usr/bin/spotify'
