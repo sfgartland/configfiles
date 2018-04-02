@@ -1,3 +1,10 @@
+Basic:
+  ntp(remember to start ntpd)
+
+Terminal:
+  rxvt-unicode-pixbuf
+  fish
+
 DE:
   i3-gaps
 
@@ -20,7 +27,3 @@ DM:
     lightdm-webkit2-greeter
       lightdm-webkit2-theme-material2
     light-locker
-
-Terminal:
-  rxvt-unicode-pixbuf
-  fish
