@@ -261,19 +261,12 @@ format-disconnected =
 ;label-disconnected-foreground = ${colors.foreground-alt}
 
 [module/date]
-type = internal/date
+type = custom/script
 interval = 5
 
-date-alt =
-date= " %d.%m.%y"
+exec = ~/.config/polybar/datetime.sh
 
-time= %H:%M:%S
-time-alt = %H:%M:%S
-
-format-prefix = 
-format-prefix-foreground = ${colors.foreground-alt}
-
-label = %time% %date%
+click-left = google-chrome-stable --app="https://calendar.google.com"
 
 [module/volume]
 type = internal/volume
