@@ -3,6 +3,6 @@
 # linkto: ~/.config/polybar/check-updates.sh
 
 echo "Checking for updates..."
-echo $(checkupdates | wc -l)" updates available"
+echo $(checkupdates | wc -l)" updates pending"
 
 exit 0
