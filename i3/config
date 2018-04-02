@@ -132,7 +132,7 @@ smart_gaps on
 exec --no-startup-id nitrogen --restore
 
 # Kills all running comptons and starts a new compton daemon
-exec --no-startup-id pkill compton && compton -b
+exec --no-startup-id compton -b
 
 exec light-locker --lock-on-suspend --lock-on-lid
 
