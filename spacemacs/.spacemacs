@@ -34,7 +34,6 @@ values."
    dotspacemacs-configuration-layers
    '(
      yaml
-     yaml
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
@@ -357,6 +356,15 @@ you should place your code here."
           ((eq major-mode 'react-mode)
            (react-mode))))
   )
+
+  ;; sets up yasnippet loadingdir
+  (setq yas-snippet-dirs
+        '("~/.emacs.d/private/snippets"))                 ;; personal snippets
+
+  ;; Makes snippets show up in autocomplete
+  (setq-default dotspacemacs-configuration-layers
+              '((auto-completion :variables
+                                 auto-completion-enable-snippets-in-popup t)))
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
