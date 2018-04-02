@@ -224,6 +224,11 @@ bindsym XF86AudioPause exec playerctl pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
+# Control spotify by keybindings
+bindsym Shift+Mod1+s exec playerctl play-pause
+bindsym Shift+Mod1+a exec playerctl previous
+bindsym Shift+Mod1+d exec playerctl next
+
 bindsym $mod+Shift+s exec "emacsclient -c"
 bindsym $mod+Shift+d exec "exec i3-sensible-terminal -e ranger"
 
