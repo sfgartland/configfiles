@@ -1,5 +1,11 @@
 !! linkto: ~/.Xdefaults
 
+URxvt.perl-ext-common: default,matcher,selection-to-clipboard
+
+!! Clickable URLs
+URxvt.url-launcher: /usr/bin/xdg-open
+URxvt.matcher.button: 1
+
 !! Appearance
 urxvt.termName: rxvt-unicode
 urxvt.scrollBar: false
