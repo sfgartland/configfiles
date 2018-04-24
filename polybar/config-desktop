@@ -32,7 +32,7 @@ bottom = true
 
 modules-left = i3 xwindow
 modules-center = 
-modules-right = updates
+modules-right = mail updates
 
 
 

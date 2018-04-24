@@ -183,6 +183,13 @@ interval = 3600
 
 click-left = i3-msg "exec i3-sensible-terminal -e yaourt -Syu"
 
+
+[module/mail]
+type = custom/script
+exec = ~/.config/polybar/check-mail.sh
+tail = true
+interval = 60
+
 [module/xbacklight]
 type = internal/xbacklight
 
