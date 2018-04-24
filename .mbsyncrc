@@ -4,7 +4,7 @@ IMAPAccount outlook
 # Address to connect to
 Host outlook.office365.com
 User sfgartland@hotmail.com 
-# Pass ***REMOVED***
+# Pass *****
 # To store the password in an encrypted file use PassCmd instead of Pass
 PassCmd "secret-tool lookup account sfgartland@hotmail.com"
 #
