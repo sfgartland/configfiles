@@ -44,11 +44,11 @@ URxvt.pointerBlank:         true
 !!green     #859900  2/2 green     64 #5f8700 60 -20  65 133 153   0  68 100  60
 
 !! cant use real transparentcy due to wierd thing with cursors
-*transparent:           true
+! *transparent:           true
 *shading:               80
 
-! *depth:                 32
-! *background:            [00]#002b36
+!*depth:                 32
+!*background:            [80]#002b36
 *background:            #002b36
 *foreground:            #657b83
 *fading:                40
