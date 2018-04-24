@@ -1,0 +1,11 @@
+# linkto: ~/.config/systemd/user/mbsync.timer
+[Unit]
+Description=Mailbox synchronization timer
+
+[Timer]
+OnBootSec=1m
+OnUnitActiveSec=1m
+unit=mbsync.service
+
+[Install]
+WantedBy=timers.target
