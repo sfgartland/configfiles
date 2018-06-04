@@ -74,7 +74,6 @@
         :desc "Org Capture"             :nv "X"  #'+org-capture/open
 
         ;; Most commonly used
-        :desc "Find file in project"    :n "p f" #'projectile-find-file
         :desc "Switch workspace buffer" :n ","   #'persp-switch-to-buffer
         :desc "Toggle last popup"       :n "~"   #'doom/popup-toggle
         :desc "Eval expression"         :n "`"   #'eval-expression
@@ -253,7 +252,8 @@
 
         (:desc "project" :prefix "p"
           :desc "Browse project"          :n  "." #'+default/browse-project
-          :desc "Find file in project"    :n  "/" #'projectile-find-file
+          :desc "Find file in project"    :n  "f" #'projectile-find-file
+          :desc "Do Ag search in project" :n  "/" #'projectile-ag
           :desc "Run cmd in project root" :nv "!" #'projectile-run-shell-command-in-root
           :desc "Switch project"          :n  "p" #'projectile-switch-project
           :desc "Recent project files"    :n  "r" #'projectile-recentf

@@ -3,8 +3,10 @@
 IMAPAccount outlook
 # Address to connect to
 Host outlook.office365.com
+Port 993
+AuthMech PLAIN
 User sfgartland@hotmail.com 
-# Pass bl-ueAndSau12
+# Pass ************
 # To store the password in an encrypted file use PassCmd instead of Pass
 PassCmd "secret-tool lookup account sfgartland@hotmail.com"
 #
@@ -13,7 +15,7 @@ SSLType IMAPS
 # The following line should work. If get certificate errors, uncomment the two following lines and read the "Troubleshooting" section.
 CertificateFile /etc/ssl/certs/ca-certificates.crt
 #CertificateFile ~/.cert/imap.gmail.com.pem
-#CertificateFile ~/.cert/Equifax_Secure_CA.pem
+# CertificateFile ~/.cert/Equifax_Secure_CA.pem
 
 IMAPStore outlook-remote
 Account outlook
