@@ -5,12 +5,13 @@
 ;=====================================================
 
 [colors]
-;background = ${xrdb:color0:#222}
-background = #073642
+; background = ${xrdb:color0:#222}
+; background = #073642
+background = #40efefef
 background-alt = #444
 ;foreground = ${xrdb:color7:#222}
-foreground = #bbb
-foreground-alt = #bbb
+foreground = #111111
+foreground-alt = #111111
 primary = #ffb52a
 secondary = #e60053
 alert = #bd2c40
@@ -175,6 +176,12 @@ click-left = playerctl play-pause
 scroll-up = playerctl previous
 scroll-down = playerctl next
 
+[module/bluetooth]
+type = custom/script
+exec = ~/.config/polybar/bluetooth.sh
+tail = true
+interval = 2
+
 [module/updates]
 type = custom/script
 exec = ~/.config/polybar/check-updates.sh
@@ -312,7 +319,7 @@ battery = BAT0
 adapter = AC
 full-at = 98
 
-format-time = %H:%M
+time-format = %H:%M
 
 format-charging = <animation-charging> <label-charging>
 
