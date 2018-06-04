@@ -12,3 +12,5 @@
            :files ("lsp-javascript-flow.el")))
 
 (package! evil-magit)
+
+(package! ag)
