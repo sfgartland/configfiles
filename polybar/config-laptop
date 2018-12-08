@@ -11,7 +11,7 @@ top = true
 
 modules-left = battery wlan-laptop bluetooth
 modules-center = date
-modules-right = mail volume xbacklight
+modules-right = updates mail volume xbacklight
 
 
 [bar/bottom]

@@ -58,7 +58,7 @@ top = true
 
 modules-left = battery wlan 
 modules-center = date
-modules-right = volume xbacklight powermenu
+modules-right = updates volume xbacklight
 
 
 [bar/bottom-base]
@@ -243,6 +243,8 @@ interval = 3.0
 
 format-connected = <ramp-signal> <label-connected>
 label-connected = %essid% %downspeed%
+format-connected-background = #ffe0b3
+format-connected-padding = 2
 
 ; format-disconnected =
 format-disconnected = <label-disconnected>
@@ -285,12 +287,14 @@ click-left = google-chrome-stable --app="https://calendar.google.com"
 [module/volume]
 type = internal/alsa
 
-; format-volume = <label-volume> <bar-volume>
+format-volume = "  <label-volume> <bar-volume>"
 ; label-volume = VOL
-format-volume-prefix = 
+format-volume-prefix =   
 format-volume-prefix-foreground=${colors.foreground-alt}
 label-volume = " %percentage%%"
 label-volume-foreground = ${root.foreground}
+master-mixer = Master
+
 
 format-muted-prefix = " "
 format-muted-foreground = ${colors.foreground-alt}

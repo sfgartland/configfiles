@@ -31,6 +31,8 @@ font pango:monospace 8
 # setup for monitors
 exec --no-startup-id ./monitor-setup.sh
 
+exec "/usr/bin/xcalib -d :0 ~/.local/share/icc/hp-probook-450-g1.icm"
+
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -239,6 +241,7 @@ bindsym $mod+Shift+a exec "~/.config/i3/lock.sh"
 # AUTOSTARTS
 exec i3-msg 'workspace '$ws4'; exec i3-sensible-terminal'
 exec i3-msg 'workspace '$ws4'; exec i3-sensible-terminal'
-exec i3-msg 'workspace '$ws2'; exec i3-sensible-terminal -e ranger'
+# exec i3-msg 'workspace '$ws2'; exec i3-sensible-terminal -e ranger'
+exec i3-msg 'workspace '$ws2'; exec thunar'
 exec i3-msg 'workspace '$ws9'; exec i3-sensible-terminal -e atop -p'
-exec i3-msg 'workspace '$ws10'; exec /usr/bin/spotify'
+# exec i3-msg 'workspace '$ws10'; exec /usr/bin/spotify'
