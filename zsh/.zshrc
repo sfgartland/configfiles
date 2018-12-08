@@ -62,7 +62,6 @@ HIST_STAMPS="dd/mm/yyyy"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   git
-  vi-mode
   npm
   yarn
   node
@@ -101,8 +100,9 @@ export SSH_KEY_PATH="~/.ssh/rsa_id"
 #fi
 
 # Set our default path
-set PATH $PATH /usr/local/sbin /usr/local/bin /usr/bin /opt/anaconda/bin
-set PATH $PATH /home/sfgartland/.yarn/bin
+PATH=$PATH:/usr/local/sbin:/usr/local/bin:/usr/bin:/opt/anaconda/bin
+PATH=$PATH:/home/sfgartland/.yarn/bin
+export PATH
 
 alias e="emacsclient -c"
 alias testnet="ping 8.8.8.8"
