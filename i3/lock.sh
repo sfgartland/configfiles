@@ -4,4 +4,4 @@
 
 
 playerctl pause
-light-locker-command -l
+dm-tool lock
