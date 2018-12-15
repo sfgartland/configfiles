@@ -4,6 +4,8 @@
 
 autolinker.sh is a script written in bash to automaticly create symbolic links for configuration files based on comments in the file, or a file in a parent directory. You can also define different configs based on platform/unit.
 
+Writing this in Bash has turned out to be a mistake and i apolegize for the resulting spaghetti code.
+
 ### Linking individual files
 
 If you are only linking a single file you should add a comment in the beginning of the file with the following syntax.
