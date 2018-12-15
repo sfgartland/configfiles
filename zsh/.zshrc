@@ -102,6 +102,7 @@ export SSH_KEY_PATH="~/.ssh/rsa_id"
 # Set our default path
 PATH=$PATH:/usr/local/sbin:/usr/local/bin:/usr/bin:/opt/anaconda/bin
 PATH=$PATH:/home/sfgartland/.yarn/bin
+PATH=$PATH:/home/sfgartland/.emacs.d/bin
 export PATH
 
 alias e="emacsclient -c"
