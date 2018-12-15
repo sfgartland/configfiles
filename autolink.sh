@@ -29,6 +29,7 @@ function getTargetPath {
     fi
 }
 
+# uses a linkto file to generate link path for file
 function getTargetPathFromCommon {
 
     # max number of levels to climb, probably not needed
