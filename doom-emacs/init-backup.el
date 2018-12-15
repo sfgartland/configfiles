@@ -41,7 +41,7 @@
         +defaults)       ; default popup rules
       ;pretty-code       ; replace bits of code with pretty symbols
       ;tabbar            ; FIXME an (incomplete) tab bar for Emacs
-       unicode           ; extended unicode support for various languages
+      ;unicode           ; extended unicode support for various languages
        vi-tilde-fringe   ; fringe tildes to mark beyond EOB
        window-select     ; visually switch windows
 
@@ -62,7 +62,7 @@
       ;gist              ; interacting with github gists
       ;macos             ; MacOS-specific commands
       ;make              ; run make tasks from Emacs
-      magit             ;
+      ;magit             ;
       ;password-store    ; password manager for nerds
       ;pdf               ; pdf enhancements
       ;prodigy           ; FIXME managing external services & code builders
@@ -77,7 +77,7 @@
       ;(cc +irony +rtags); C/C++/Obj-C madness
       ;common-lisp       ; if you've seen one lisp, you've seen them all
       ;crystal           ; ruby at the speed of c
-      clojure           ; java with a lisp
+      ;clojure           ; java with a lisp
       ;csharp            ; unity, .NET, and mono shenanigans
        data              ; config/data formats
       ;erlang            ; an elegant language for a more civilized age
@@ -89,7 +89,7 @@
       ;(haskell +intero) ; a language that's lazier than I am
       ;hy                ; readability of scheme w/ speed of python
       ;(java +meghanada) ; the poster child for carpal tunnel syndrome
-      javascript        ; all(hope(abandon(ye(who(enter(here))))))
+      ;javascript        ; all(hope(abandon(ye(who(enter(here))))))
       ;julia             ; a better, faster MATLAB
       ;latex             ; writing papers in Emacs has never been so fun
       ;ledger            ; an accounting system in Emacs
@@ -108,9 +108,9 @@
       ;php               ; perl's insecure younger brother
       ;plantuml          ; diagrams for confusing people more
       ;purescript        ; javascript, but functional
-      python            ; beautiful is better than ugly
+      ;python            ; beautiful is better than ugly
       ;qt                ; the 'cutest' gui framework ever
-      rest              ; Emacs as a REST client
+      ;rest              ; Emacs as a REST client
       ;ruby              ; 1.step do {|i| p "Ruby is #{i.even? ? 'love' : 'life'}"}
       ;rust              ; Fe2O3.unwrap().unwrap().unwrap().unwrap()
       ;scala             ; java, but good
@@ -135,7 +135,7 @@
       ;floobits          ; peer programming for a price
       ;impatient-mode    ; show off code over HTTP
 
-       :private
+       :config
        ;; For literate config users. This will tangle+compile a config.org
        ;; literate config in your `doom-private-dir' whenever it changes.
       ;literate
@@ -144,6 +144,5 @@
        ;; a Spacemacs-inspired keybinding scheme, a custom yasnippet library,
        ;; and additional ex commands for evil-mode. Use it as a reference for
        ;; your own modules.
-       (severin2 +bindings +snippets +evil-commands)
-       (email +bindings +snippets +evil-commands))
+       (default +bindings +snippets +evil-commands))
 
