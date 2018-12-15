@@ -1,72 +1,33 @@
-;;; config/default/+evil-commands.el -*- lexical-binding: t; -*-
-;;;###if (featurep! :feature evil)
+;;; private/default/+evil-commands.el -*- lexical-binding: t; -*-
 
 (defalias 'ex! 'evil-ex-define-cmd)
 
-(evil-define-command doom:cleanup-session (bang)
-  (interactive "<!>")
-  (doom/cleanup-session bang))
-
-(evil-define-operator doom:open-scratch-buffer (bang)
-  (interactive "<!>")
-  (doom/open-scratch-buffer bang))
-
-(evil-define-command doom:pwd (bang)
-  "Display the current working directory. If BANG, copy it to your clipboard."
-  (interactive "<!>")
-  (if (not bang)
-      (pwd)
-    (kill-new default-directory)
-    (message "Copied to clipboard")))
-
-(evil-define-command doom:make (command &optional from-pwd)
-  "Run the current project Makefile's COMMAND. If FROM-PWD (bang), run the make
-command from the current directory instead of the project root."
-  (interactive "<sh><!>")
-  (let ((default-directory (if from-pwd default-directory (doom-project-root t)))
-        (command (and command (evil-ex-replace-special-filenames command))))
-    (compile command)))
-
-(evil-define-command doom:reverse-lines (beg end)
-  "Reverse lines between BEG and END."
-  (interactive "<r>")
-  (reverse-region beg end))
-
-
-;;
-;; Commands
-;;
-
-;;; Commands defined elsewhere
+  ;;; Commands defined elsewhere
 ;;(ex! "al[ign]"      #'+evil:align)
 ;;(ex! "g[lobal]"     #'+evil:global)
 
-;;; Custom commands
+  ;;; Custom commands
 ;; Editing
 (ex! "@"            #'+evil:macro-on-all-lines)   ; TODO Test me
 (ex! "al[ign]"      #'+evil:align)
-(ex! "ral[ign]"     #'+evil:align-right)
 (ex! "enhtml"       #'+web:encode-html-entities)
 (ex! "dehtml"       #'+web:decode-html-entities)
 (ex! "mc"           #'+evil:mc)
 (ex! "iedit"        #'evil-multiedit-ex-match)
 (ex! "na[rrow]"     #'+evil:narrow-buffer)
 (ex! "retab"        #'+evil:retab)
-(ex! "rev[erse]"    #'doom:reverse-lines)
 ;; External resources
 ;; TODO (ex! "db"          #'doom:db)
 ;; TODO (ex! "dbu[se]"     #'doom:db-select)
 ;; TODO (ex! "go[ogle]"    #'doom:google-search)
-(ex! "lo[okup]"    #'+lookup:online)
-(ex! "dash"        #'+lookup:dash)
-(ex! "dd"          #'+lookup:devdocs)
+(ex! "lo[okup]"    #'+jump:online)
 (ex! "http"        #'httpd-start)            ; start http server
 (ex! "repl"        #'+eval:repl)             ; invoke or send to repl
 ;; TODO (ex! "rx"          'doom:regex)             ; open re-builder
 (ex! "sh[ell]"     #'+eshell:run)
 (ex! "t[mux]"      #'+tmux:run)              ; send to tmux
 (ex! "tcd"         #'+tmux:cd-here)          ; cd to default-directory in tmux
-(ex! "pad"         #'doom:open-scratch-buffer)
+(ex! "x"           #'doom/open-project-scratch-buffer)
 ;; GIT
 (ex! "gist"        #'+gist:send)  ; send current buffer/region to gist
 (ex! "gistl"       #'+gist:list)  ; list gists by user
@@ -78,7 +39,7 @@ command from the current directory instead of the project root."
 (ex! "gblame"      #'magit-blame)
 (ex! "grevert"     #'git-gutter:revert-hunk)
 ;; Dealing with buffers
-(ex! "clean[up]"   #'doom:cleanup-session)
+(ex! "clean[up]"   #'doom/cleanup-session)
 (ex! "k[ill]"      #'doom/kill-this-buffer)
 (ex! "k[ill]all"   #'+default:kill-all-buffers)
 (ex! "k[ill]m"     #'+default:kill-matching-buffers)
@@ -89,31 +50,22 @@ command from the current directory instead of the project root."
 ;; Project navigation
 (ex! "a"           #'projectile-find-other-file)
 (ex! "cd"          #'+default:cd)
-(ex! "pwd"         #'doom:pwd)
 (cond ((featurep! :completion ivy)
        (ex! "ag"       #'+ivy:ag)
-       (ex! "agc[wd]"  #'+ivy:ag-from-cwd)
+       (ex! "agc[wd]"  #'+ivy:ag-cwd)
        (ex! "rg"       #'+ivy:rg)
-       (ex! "rgc[wd]"  #'+ivy:rg-from-cwd)
-       (ex! "pt"       #'+ivy:pt)
-       (ex! "ptc[wd]"  #'+ivy:pt-from-cwd)
-       (ex! "grep"      #'+ivy:grep)
-       (ex! "grepc[wd]" #'+ivy:grep-from-cwd)
+       (ex! "rgc[wd]"  #'+ivy:rg-cwd)
        (ex! "sw[iper]" #'+ivy:swiper)
        (ex! "todo"     #'+ivy:todo))
       ((featurep! :completion helm)
        (ex! "ag"       #'+helm:ag)
-       (ex! "agc[wd]"  #'+helm:ag-from-cwd)
+       (ex! "agc[wd]"  #'+helm:ag-cwd)
        (ex! "rg"       #'+helm:rg)
-       (ex! "rgc[wd]"  #'+helm:rg-from-cwd)
-       (ex! "pt"       #'+helm:pt)
-       (ex! "ptc[wd]"  #'+helm:pt-from-cwd)
-       (ex! "grep"      #'+helm:grep)
-       (ex! "grepc[wd]" #'+helm:grep-from-cwd)
+       (ex! "rgc[wd]"  #'+helm:rg-cwd)
        (ex! "sw[oop]"  #'+helm:swoop)
        (ex! "todo"     #'+helm:todo)))
 ;; Project tools
-(ex! "mak[e]"      #'doom:make)
+(ex! "build"       #'+eval/build)
 (ex! "debug"       #'+debug/run)
 (ex! "er[rors]"    #'flycheck-list-errors)
 ;; File operations

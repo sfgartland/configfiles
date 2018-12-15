@@ -1,4 +1,4 @@
-;; private/default/autoload/default.el -*- lexical-binding: t; -*-
+;; config/default/autoload/default.el -*- lexical-binding: t; -*-
 
 ;;;###autoload
 (defun +default/yank-buffer-filename ()
@@ -9,39 +9,71 @@
     (error "Couldn't find filename in current buffer")))
 
 ;;;###autoload
-(defmacro +default--def-browse-in! (name dir)
-  (let ((prefix (cdr (doom-module-from-path (or load-file-name byte-compile-current-file)))))
-    `(defun ,(intern (format "%s/browse-%s" prefix name)) ()
-       (interactive)
-       (doom-project-browse ,dir))))
+(defun +default/browse-project ()
+  (interactive) (doom-project-browse (doom-project-root)))
+;; NOTE No need for find-in-project, use `projectile-find-file'
 
 ;;;###autoload
-(defmacro +default--def-find-in! (name dir)
-  (let ((prefix (cdr (doom-module-from-path (or load-file-name byte-compile-current-file)))))
-    `(defun ,(intern (format "+%s/find-in-%s" prefix name)) ()
-       (interactive)
-       (doom-project-find-file ,dir))))
+(defun +default/browse-templates ()
+  (interactive) (doom-project-browse +file-templates-dir))
+;;;###autoload
+(defun +default/find-in-templates ()
+  (interactive) (doom-project-find-file +file-templates-dir))
 
+;;;###autoload
+(defun +default/browse-emacsd ()
+  (interactive) (doom-project-browse doom-emacs-dir))
+;;;###autoload
+(defun +default/find-in-emacsd ()
+  (interactive) (doom-project-find-file doom-emacs-dir))
 
-;;;###autoload (autoload '+default/browse-project "private/default/autoload/default" nil t)
-(+default--def-browse-in! project (doom-project-root))
+;;;###autoload
+(defun +default/browse-notes ()
+  (interactive) (doom-project-browse org-directory))
+;;;###autoload
+(defun +default/find-in-notes ()
+  (interactive) (doom-project-find-file org-directory))
 
-;;;###autoload (autoload '+default/find-in-templates "private/default/autoload/default" nil t)
-(+default--def-find-in!   templates +file-templates-dir)
-;;;###autoload (autoload '+default/browse-templates "private/default/autoload/default" nil t)
-(+default--def-browse-in! templates +file-templates-dir)
+;;;###autoload
+(defun +default/browse-snippets ()
+  (interactive) (doom-project-browse +snippets-dir))
+;;;###autoload
+(defun +default/find-in-snippets ()
+  (interactive) (doom-project-find-file +snippets-dir))
 
-;;;###autoload (autoload '+default/find-in-emacsd "private/default/autoload/default" nil t)
-(+default--def-find-in!   emacsd doom-emacs-dir)
-;;;###autoload (autoload '+default/browse-emacsd "private/default/autoload/default" nil t)
-(+default--def-browse-in! emacsd doom-emacs-dir)
+;;;###autoload
+(defun +default/find-in-config ()
+  "Open a file somewhere in `doom-private-dir' via a fuzzy filename search."
+  (interactive)
+  (doom-project-find-file doom-private-dir))
 
-;;;###autoload (autoload '+default/find-in-notes "private/default/autoload/default" nil t)
-(+default--def-find-in!   notes +org-dir)
-;;;###autoload (autoload '+default/browse-notes "private/default/autoload/default" nil t)
-(+default--def-browse-in! notes +org-dir)
+;;;###autoload
+(defun +default/browse-config ()
+  "Browse the files in `doom-private-dir'."
+  (interactive)
+  (doom-project-browse doom-private-dir))
 
-;;;###autoload (autoload '+default/find-in-snippets "private/default/autoload/default" nil t)
-(+default--def-find-in! snippets +default-snippets-dir)
-;; NOTE No need for a browse-snippets variant, use `yas-visit-snippet-file'
+;;;###autoload
+(defun +default/compile (arg)
+  "Runs `compile' from the root of the current project.
 
+If a compilation window is already open, recompile that instead.
+
+If ARG (universal argument), runs `compile' from the current directory."
+  (interactive "P")
+  (if (and (bound-and-true-p compilation-in-progress)
+           (buffer-live-p compilation-last-buffer))
+      (recompile)
+    (call-interactively
+     (if arg
+         #'projectile-compile-project
+       #'compile))))
+
+;;;###autoload
+(defun +default/man-or-woman ()
+  "Invoke `man' if man is installed, otherwise use `woman'."
+  (interactive)
+  (call-interactively
+   (if (executable-find "man")
+       #'man
+     #'woman)))
