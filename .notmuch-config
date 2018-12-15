@@ -50,7 +50,7 @@ primary_email=sfgartland@hotmail.com
 #
 [new]
 tags=unread;inbox;
-ignore=
+ignore=NSB;Finn;Junk;Deleted;
 
 # Search configuration
 #

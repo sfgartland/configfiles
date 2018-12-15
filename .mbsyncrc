@@ -28,7 +28,7 @@ Path ~/.mail/outlook/
 Channel outlook
 Master :outlook-remote:
 Slave :outlook-local:
-Patterns * !"Finn*" !"NSB*" !"Vipps*" !"Scanning Skole*" ![Mailspring]* !"Junk*" !"Notes*"
+Patterns * !"Finn*" !"NSB*" !"Vipps*" !"Scanning Skole*" !"[Mailspring]*" !"Junk*" !"notes*"
 # Or include everything
 # Patterns *
 # Automatically create missing mailboxes, both locally and on the server

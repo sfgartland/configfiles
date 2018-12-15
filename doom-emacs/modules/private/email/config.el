@@ -2,8 +2,5 @@
 
 (def-package! notmuch)
 
-(load! +bindings)
-
 (after! notmuch
   (setq notmuch-search-oldest-first nil))
-

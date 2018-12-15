@@ -1,6 +1,6 @@
 ;;; private/default/config.el -*- lexical-binding: t; -*-
 
-(load! +bindings)
+;;(load! +bindings)
 
 
 ;;
@@ -9,7 +9,7 @@
 
 (def-package! emacs-snippets :after yasnippet)
 (def-package! company)
-(def-package! lsp-javascript-flow)
+;; (def-package! lsp-javascript-flow)
 (def-package! evil-magit)
 
 ;;
@@ -23,8 +23,8 @@
         epa-pinentry-mode 'loopback))
 
 
-(when (featurep 'evil)
-  (load! +evil-commands)
+;;(when (featurep 'evil)
+;;  (load! +evil-commands)
 
   ;; Makes ; and , the universal repeat-keys in evil-mode
   (defmacro do-repeat! (command next-func prev-func)
@@ -85,8 +85,8 @@
   (setq company-idle-delay 0.2
         company-minimum-prefix-length 3))
 
-(after! lsp-javascript-flow
-  (add-hook 'js-mode-hook #'lsp-javascript-flow-enable)
-  (add-hook 'js2-mode-hook #'lsp-javascript-flow-enable) ;; for js2-mode support
-  (add-hook 'rjsx-mode #'lsp-javascript-flow-enable)) ;; for rjsx-mode support
+;; (after! lsp-javascript-flow
+;;   (add-hook 'js-mode-hook #'lsp-javascript-flow-enable)
+;;   (add-hook 'js2-mode-hook #'lsp-javascript-flow-enable) ;; for js2-mode support
+;;   (add-hook 'rjsx-mode #'lsp-javascript-flow-enable)) ;; for rjsx-mode support
 

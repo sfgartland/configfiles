@@ -4,6 +4,7 @@
 
 (map! [remap evil-jump-to-tag] #'projectile-find-tag
       [remap find-tag]         #'projectile-find-tag
+      [remap newline]          #'newline-and-indent
 
       ;; Ensure there are no conflicts
       :nmvo doom-leader-key nil

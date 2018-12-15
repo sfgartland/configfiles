@@ -6,5 +6,5 @@
 #load and restart emacs daemon
 
 cd ~/.emacs.d
-make
+#make install
 systemctl --user restart emacsdaemon
