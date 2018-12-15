@@ -3,6 +3,7 @@
 # This script searches PWD and sub-dirs for files containing linkto/linkto[platform] strings and
 # creates symbolic links.
 
+numOfLines=100
 
 while [[ $platform != "desktop" ]] && [[ $platform != "laptop" ]]; do
 	printf "Select platform: (desktop/laptop) "
@@ -10,9 +11,6 @@ while [[ $platform != "desktop" ]] && [[ $platform != "laptop" ]]; do
 done
 
 function getTargetPath {
-
-    numOfLines=100
-
     file=$1
 
     linkString=$(head -$numOfLines $file | grep -E "\s{1}linkto\[$platform\]:")
@@ -46,11 +44,18 @@ function getTargetPathFromCommon {
         navString=$dir$(seq -s/.. $currentLevel|tr -d "[:digit:]")
         path=$(realpath $navString)
 
-        if [[ $(find $path -type f -name $(basename $0)) ]]; then
+        if [[ $(find $path -maxdepth 1 -type f -name $(basename $0)) ]]; then
             break
         fi
     
-        linktoFile=$(find $path -type f -name "linkto")
+	# If there is a file called nolink stop looking for a link for this file
+	nolinkFile=$(find $path -maxdepth 1 -type f -name "nolink")
+	if [[ $nolinkFile ]]; then
+		print "a"
+		break
+	fi
+
+        linktoFile=$(find $path -maxdepth 1 -type f -name "linkto")
 
         if [[ $linktoFile ]]; then
             baseDir=$(dirname $linktoFile)
@@ -74,7 +79,7 @@ for file in $(find $PWD -type f \
     ! -path "*configfiles/auto-setups*"); do
 
     # basename $0 checks if the file is itself
-	if [[ $file != *$(basename $0) ]]; then
+	if [[ $file != *$(basename $0) ]] && [[ $(head -$numOfLines $file | grep -E "\s{1}nolink") = "" ]]; then
 
         linkTarget=$(getTargetPath $file)
 
