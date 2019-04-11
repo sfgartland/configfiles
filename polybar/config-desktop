@@ -6,7 +6,7 @@ include-file = ~/.config/polybar/config-common
 [bar/primary-top]
 inherit = bar/base
 
-monitor = HDMI-0
+monitor = HDMI-3
 top = true
 
 modules-left = wlan-desktop
@@ -17,7 +17,7 @@ modules-right = volume
 [bar/primary-bottom]
 inherit = bar/base
 
-monitor = HDMI-0
+monitor = HDMI-3
 bottom = true
 
 modules-left = i3 xwindow
