@@ -5,11 +5,6 @@
 
 numOfLines=100
 
-while [[ $platform != "desktop" ]] && [[ $platform != "laptop" ]]; do
-	printf "Select platform: (desktop/laptop) "
-	read platform
-done
-
 function getTargetPath {
     file=$1
 
@@ -69,20 +64,11 @@ function getTargetPathFromCommon {
     done
 }
 
+function linkFile {
 
-
-for file in $(find $PWD -type f \
-    ! -name "*.swp" \
-    ! -name "*#" \
-    ! -name "linkto" \
-    ! -path "*.git*" \
-    ! -path "*configfiles/auto-setups*"); do
-
-    # basename $0 checks if the file is itself
-	if [[ $file != *$(basename $0) ]] && [[ $(head -$numOfLines $file | grep -E "\s{1}nolink") = "" ]]; then
-
-        linkTarget=$(getTargetPath $file)
-
+	file=$1
+	linkTarget=$2
+	
         if [[ ! $linkTarget ]]; then
             linkTarget=$(getTargetPathFromCommon $file)
             echo $linkTarget
@@ -160,6 +146,42 @@ for file in $(find $PWD -type f \
 			      fi
 		    fi
 	  fi
+}
+
+
+while [[ $platform != "desktop" ]] && [[ $platform != "laptop" ]]; do
+	printf "Select platform: (desktop/laptop) "
+	read platform
+done
+
+
+#If a argument is passed, just run autolinker for that file and exit
+if [[ $1 ]]; then
+	
+	#use readlink to get absolute path of file
+	file=$(readlink -f $1)
+	linkTarget=$(getTargetPath $file)
+
+	linkFile $file $linkTarget	
+
+	exit 0
+fi
+
+
+for file in $(find $PWD -type f \
+    ! -name "*.swp" \
+    ! -name "*#" \
+    ! -name "linkto" \
+    ! -path "*.git*" \
+    ! -path "*configfiles/auto-setups*"); do
+
+    # basename $0 checks if the file is itself
+	if [[ $file != *$(basename $0) ]] && [[ $(head -$numOfLines $file | grep -E "\s{1}nolink") = "" ]]; then
+
+        linkTarget=$(getTargetPath $file)
+
+	linkFile $file $linkTarget
+
 
 	fi
 done
