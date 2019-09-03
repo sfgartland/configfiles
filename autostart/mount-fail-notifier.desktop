@@ -1,0 +1,9 @@
+# linkto[laptop]: ~/.config/autostart/mount-fail-notifier.desktop
+
+[Desktop Entry]
+Name=NTFS mount failure
+Comment=Some description about your script
+Exec=/bin/mount-fail-notifier.sh
+Terminal=false
+Type=Application
+X-GNOME-Autostart-enabled=true
